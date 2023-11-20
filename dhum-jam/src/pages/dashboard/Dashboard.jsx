@@ -33,7 +33,7 @@ const Dashboard = () => {
     return hasInvalidCategory;
   }
  const data = {
-   labels: ["custom", "category 1", "category 2", "category 3", "category 4"],
+   labels: ["custom", "category 7", "category 8", "category 9", "category 10"],
    datasets: [
      {
        label: "",
@@ -94,7 +94,7 @@ const Dashboard = () => {
     <div className="bg-[#030303] flex w-screen min-h-screen h-full justify-center items-center py-10">
       <div className="flex flex-col justify-center">
         <div className="flex justify-center w-[600px]">
-          <p className="text-white text-4xl flex w-full">
+          <p className="text-white text-4xl flex w-full justify-center pb-4">
             {adminDetails?.name}, {adminDetails?.location} on Dhum Jam
           </p>
         </div>
