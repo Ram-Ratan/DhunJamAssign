@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import EyeIcon from '../../assets/svg/EyeIcon';
 import SlashEyeIcon from '../../assets/svg/SlashEyeIcon';
 import { logIn } from '../../apiClient/login';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
     const [isPassword, setIsPassword] = useState(false);
+    const navigate = useNavigate();
 
     const handleLogIn = async ()=>{
         const payload = {
@@ -15,19 +17,20 @@ const Login = () => {
             "password": password
         }
         await logIn(payload).then((res)=>{
-            console.log(res);
+            localStorage.setItem("user",JSON.stringify(res?.data?.data));
+            navigate("/dashboard")
         }).catch((err)=>{
             console.log(err);
         })
     }
 
   return (
-    <div className="bg-[#030303] flex w-screen h-screen justify-center items-center">
-      <div className="flex flex-col w-[50%]">
-        <div className="flex justify-center">
-          <p className="text-white text-4xl">Venue Admin Login</p>
+    <div className="bg-[#030303] flex w-screen h-full min-h-screen justify-center items-center">
+      <div className="flex flex-col full">
+        <div className="flex justify-center w-[600px]">
+          <p className="text-white text-4xl w-[600px] flex items-center justify-center">Venue Admin Login</p>
         </div>
-        <div className="flex justify-center gap-10 m-2">
+        <div className="flex justify-center gap-10 m-2 w-[600px]">
           <input
             type="text"
             className="w-[500px] bg-[#030303] h-8 rounded-lg text-white px-2 py-1"
